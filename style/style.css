@@ -2,7 +2,7 @@ body{
     text-align: center;
 }
 .container, #operators, .numbers{
-    gap: 15px;
+    gap: 5px;
 }
 .container{
     background-color: grey;
@@ -26,16 +26,16 @@ body{
     grid-area: number;
     font-size: 24px;
 }
-.clear{
+#clear{
     grid-area: clear;
 }
-.zero{
+#zero{
     grid-area: zero;
 }
-.equal{
+#equal{
     grid-area: equal;
 }
-.dot{
+#dot{
     grid-area: dot;
 }
 #operators{
@@ -45,6 +45,7 @@ body{
 }
 #display{
     padding: 10px 30px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: end;
     align-items: flex-end;
