@@ -31,6 +31,7 @@ function operate(){
     switch(operator){
         case '+':
             n1 = display.textContent = add(n1,n2).toString();
+            console.log(display.textContent);
             break;
         case '-':
             n1 = display.textContent = substract(n1,n2).toString();
@@ -97,8 +98,9 @@ function addDigit(e){
 }
 digits.addEventListener("click", e => addDigit(e.target.textContent));
 zero.addEventListener("click", ()=> addDigit('0'));
-clear.addEventListener("click", ()=>{
-    n1 = display.textContent = 0;
+clear.addEventListener("click", e=>{
+    n1 = display.textContent = '0';
+    console.log("clear called");
     n2 = operator = undefined;
     equal.disabled = true;
     operators.childNodes.forEach(button => button.disabled = false);
@@ -106,6 +108,7 @@ clear.addEventListener("click", ()=>{
     dot.disabled = false;
 });
 function backSpace(){
+    console.log("backspace called");
     if(display.textContent.length > 1 && display.textContent != unexpectedError){
         display.textContent = display.textContent.slice(0, -1);
     }else{
@@ -152,7 +155,7 @@ function addOperator(e){
 }
 operators.addEventListener("click", e => addOperator(e.target.textContent));
 function evaluateEqual(){
-    if(n2 == undefined){return};
+    if(n2 == undefined){return;}
     operate();
     operators.childNodes.forEach(button => button.disabled = false);
     operatorsDisabled = false;
@@ -161,6 +164,7 @@ function evaluateEqual(){
 };
 equal.addEventListener("click", evaluateEqual);
 function addDot(){
+    if(dot.disabled){return;}
     if(display.textContent.length > DISPLAYOVERFLOW){return};
     if(!operator){
         n1 += ".";
@@ -202,10 +206,13 @@ document.body.addEventListener("keydown", k =>{
             addOperator(k.key);
             break;
         case "Enter":
+	    k.preventDefault();
             evaluateEqual();
             break;
         case '.':
-            if(!dot.disabled){addDot()};
+            addDot();
+            break;
+        default:
             break;
     }
-})
+});
