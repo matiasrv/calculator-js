@@ -1,14 +1,19 @@
 body{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
-.container, #operators, .numbers{
+.container, #operators, #numbers{
     gap: 5px;
 }
 .container{
     background-color: grey;
     padding: 25px;
     height: 60vh;
-    width: 60vh;
+    width: 50vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr) 0px 1fr;
     grid-template-rows: repeat(6, 1fr);
@@ -19,21 +24,37 @@ body{
                          "number number number  gap   operators"
                          "zero   zero   dot     gap   equal";
 }
-.numbers{
+button{
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgb(212, 245, 255);
+}
+button:hover{
+    background-color: rgb(155, 183, 192);
+
+}
+#numbers{
     display: grid;    
     grid-template-columns: repeat(3, 1fr);
     /* grid-template-rows: repeat(3, 1fr); */
     grid-area: number;
-    font-size: 24px;
 }
 #clear{
     grid-area: clear;
+    background-color: rgba(231, 40, 40, 0.801);
+}
+#clear:hover{
+    background-color: rgba(146, 64, 64, 0.842);
 }
 #zero{
     grid-area: zero;
 }
 #equal{
     grid-area: equal;
+    background-color: rgb(253, 255, 121);
+}
+#equal:hover{
+    background-color: rgba(253, 255, 121, 0.733);
 }
 #dot{
     grid-area: dot;
@@ -49,10 +70,18 @@ body{
     display: flex;
     justify-content: end;
     align-items: flex-end;
-    background-color: white;
+    background-color: lightblue;
     font-size: 24px;
+    font-weight: bold;
     grid-area: disp;
 }
-button{
-    font-size: 24px;
+.container, #display, button{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+#operators button{
+    background-color: rgb(235, 166, 39);
+}
+#operators button:hover{
+    background-color: rgb(219, 137, 14);
 }
